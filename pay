@@ -1,0 +1,121 @@
+// Ray Whitledge
+// 2-10-2014
+// Java Programming
+// Chapter 5 Exercises
+
+import java.util.*;
+import java.text.*;
+
+public class Pay
+{
+
+	
+	public static void main(String[] args)
+	{
+		int skillLevel = 1;
+		int hoursWorked = 40;
+		double hourlyRate = 17.00;
+		final int _FULL_WEEK = 40;
+		double overtimeRate = (hourlyRate*1.5);
+		double regularPay = 0;
+		double overtimePay = 0;
+		double grossPay = 0;
+		String medicalIns = "";
+		String dentalIns = "";
+		String disabilityIns = "";
+		String retirement = "";
+		double medInsDeduct = 0;
+		final double _MED_INS_PREM = 32.50;
+		double dentInsDeduct = 0;
+		final double _DENT_INS_PREM = 20.00;
+		double disInsDeduct = 0;
+		final double _DIS_INS_PREM = 10.00;
+		double retirementDeduct = 0;
+		final double _RET_DEDUCT_RATE = .03;
+		
+		DecimalFormat decFor = new DecimalFormat("0.00");
+		Scanner input = new Scanner(System.in);
+		
+		//get user input
+		System.out.println("Enter Skill Level: ");
+		skillLevel = input.nextInt();
+		input.nextLine();
+		System.out.println("Enter hours worked: ");
+		hoursWorked = input.nextInt();
+		input.nextLine();
+		
+		switch(skillLevel)
+		{
+		case 1:
+			hourlyRate = 17.00;
+			break;
+		case 2:
+			hourlyRate = 20.00;
+			System.out.println("Would you like Medical Insurance? Y or N >");
+			medicalIns = input.nextLine();
+			System.out.println("Would you like Dental Insurance? Y or N >");
+			dentalIns = input.nextLine();
+			System.out.println("Would you like Disability Insurance? Y or N >");
+			disabilityIns = input.nextLine();
+			break;
+		case 3:
+			hourlyRate = 22.00;
+			System.out.println("Would you like Medical Insurance? Y or N >");
+			medicalIns = input.nextLine();
+			System.out.println("Would you like Dental Insurance? Y or N >");
+			dentalIns = input.nextLine();
+			System.out.println("Would you like Disability Insurance? Y or N >");
+			disabilityIns = input.nextLine();
+			System.out.println("Would you like to contribute 3% of your gross pay to your retirement fund? Y or N >");
+			retirement = input.nextLine();
+			break;
+		}
+			
+			//calculate gross pay
+			if(hoursWorked<=_FULL_WEEK)
+			{
+				regularPay = (hourlyRate*hoursWorked);
+			}
+			else
+			{
+				regularPay = (hourlyRate*_FULL_WEEK);
+				overtimePay = (overtimeRate*(hoursWorked-_FULL_WEEK)); 
+			}
+			grossPay = overtimePay + regularPay;
+			
+			//calculate deductions
+			
+			if(medicalIns.equals(Y) || medicalIns.equals(y))
+			{
+				medInsDeduct = _MED_INS_PREM;
+			}
+			if(dentalIns.equals(Y) || dentalIns.equals(y))
+			{
+				dentInsDeduct = _DENT_INS_PREM;
+			}
+			if(disabilityIns.equals(Y) || disabilityIns.equlas(y))
+			{
+				disInsDeduct = _DIS_INS_PREM;
+			}
+			if(retirement.equals(Y) || retirement.equals(y))
+			{
+				retirementDeduct = (grossPay * _RET_DEDUCT_RATE);
+			}
+			
+			
+		
+			//output
+			System.out.println("Hours worked: " + hoursWorked);
+			System.out.println("Regular Rate: " + hourlyRate);
+			System.out.println("Regular pay: " + regularPay);
+			System.out.println("Overtime Rate: " + overtimeRate);
+			System.out.println("Overtime pay: " + overtimePay);
+			System.out.println("Gross pay: " + grossPay);
+			System.out.println("Deductions:");
+			System.out.println("	Medical Ins: " + decFor.format(medInsDeduct));
+			System.out.println("	Dental Ins: " + decFor.format(dentInsDeduct));
+			System.out.println("	Disability Ins: " + decFor.format(disInsDeduct));
+			System.out.println("	Retirement Fund: " + decFor.format(retirementDeduct));
+			System.out.println("Net Pay: " + decFor.format(grossPay + overtimePay - medInsDeduct - dentInsDeduct - disInsDeduct - retirementDeduct));			}
+}
+}
