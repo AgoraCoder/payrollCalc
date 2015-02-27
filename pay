@@ -17,10 +17,10 @@ public class Pay
 		int hoursWorked = 40;
 		double hourlyRate = 17.00;
 		final int _FULL_WEEK = 40;
-		double overtimeRate = (hourlyRate*1.5);
 		double regularPay = 0;
 		double overtimePay = 0;
 		double grossPay = 0;
+		double overtimeRate = (hourlyRate*1.5);
 		String medicalIns = "";
 		String dentalIns = "";
 		String disabilityIns = "";
@@ -72,6 +72,8 @@ public class Pay
 			retirement = input.nextLine();
 			break;
 		}
+		
+			overtimeRate = (hourlyRate*1.5);
 			
 			//calculate gross pay
 			if(hoursWorked<=_FULL_WEEK)
