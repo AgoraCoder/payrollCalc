@@ -104,18 +104,18 @@ public class Pay
 				retirementDeduct = (grossPay * _RET_DEDUCT_RATE);
 			}
 			
-			totalDeductions = medInsDeduct + dentInsDeduct + disInsDeduct + retirementDeduct;
+			totalDeductions = (medInsDeduct + dentInsDeduct + disInsDeduct + retirementDeduct);
 			
 			
 		
 			//output
 			System.out.println("Hours worked: " + hoursWorked);
-			System.out.println("Regular Rate: " + hourlyRate);
-			System.out.println("Regular pay: " + regularPay);
-			System.out.println("Overtime Rate: " + overtimeRate);
-			System.out.println("Overtime pay: " + overtimePay);
-			System.out.println("Gross pay: " + grossPay);
-			System.out.println("Deductions:");
+			System.out.println("Regular Rate: " + decFor.format(hourlyRate));
+			System.out.println("Regular pay: " + decFor.format(regularPay));
+			System.out.println("Overtime Rate: " + decFor.format(overtimeRate));
+			System.out.println("Overtime pay: " + decFor.format(overtimePay));
+			System.out.println("Gross pay: " + decFor.format(grossPay));
+			System.out.println("Total Deductions: " + decFor.format(totalDeductions));
 			System.out.println("	Medical Ins: " + decFor.format(medInsDeduct));
 			System.out.println("	Dental Ins: " + decFor.format(dentInsDeduct));
 			System.out.println("	Disability Ins: " + decFor.format(disInsDeduct));
