@@ -5,6 +5,7 @@
 
 import java.util.*;
 import java.text.*;
+import java.lang.*;
 
 public class Pay
 {
@@ -32,6 +33,7 @@ public class Pay
 		final double _DIS_INS_PREM = 10.00;
 		double retirementDeduct = 0;
 		final double _RET_DEDUCT_RATE = .03;
+		double totalDeductions = 0;
 		
 		DecimalFormat decFor = new DecimalFormat("0.00");
 		Scanner input = new Scanner(System.in);
@@ -85,22 +87,24 @@ public class Pay
 			
 			//calculate deductions
 			
-			if(medicalIns.equals(Y) || medicalIns.equals(y))
+			if(medicalIns.equals("Y") || medicalIns.equals("y"))
 			{
 				medInsDeduct = _MED_INS_PREM;
 			}
-			if(dentalIns.equals(Y) || dentalIns.equals(y))
+			if(dentalIns.equals("Y") || dentalIns.equals("y"))
 			{
 				dentInsDeduct = _DENT_INS_PREM;
 			}
-			if(disabilityIns.equals(Y) || disabilityIns.equlas(y))
+			if(disabilityIns.equals("Y") || disabilityIns.equals("y"))
 			{
 				disInsDeduct = _DIS_INS_PREM;
 			}
-			if(retirement.equals(Y) || retirement.equals(y))
+			if(retirement.equals("Y") || retirement.equals("y"))
 			{
 				retirementDeduct = (grossPay * _RET_DEDUCT_RATE);
 			}
+			
+			totalDeductions = medInsDeduct + dentInsDeduct + disInsDeduct + retirementDeduct;
 			
 			
 		
@@ -116,6 +120,6 @@ public class Pay
 			System.out.println("	Dental Ins: " + decFor.format(dentInsDeduct));
 			System.out.println("	Disability Ins: " + decFor.format(disInsDeduct));
 			System.out.println("	Retirement Fund: " + decFor.format(retirementDeduct));
-			System.out.println("Net Pay: " + decFor.format(grossPay + overtimePay - medInsDeduct - dentInsDeduct - disInsDeduct - retirementDeduct));			}
-}
+			System.out.println("Net Pay: " + decFor.format((grossPay) - (totalDeductions)));
+	}
 }
